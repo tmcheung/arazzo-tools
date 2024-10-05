@@ -2,6 +2,7 @@ arazzo: 1.0.0
 info:
   title: Petstore - Apply Coupons
   version: 1.0.0
+  x-test: 123
   description: >-
     Illustrates a workflow whereby a client a) finds a pet in the petstore, 
     b) finds coupons for that pet, and finally
