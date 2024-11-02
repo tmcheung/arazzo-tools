@@ -1,4 +1,5 @@
 {
+    "workspace": ["./parser"],
     "tasks": {
         "dev": "deno run --watch --allow-read main.ts",
         "lint": "deno run --allow-env --allow-read --allow-ffi --allow-net --allow-sys --allow-run npm:@redocly/cli@1.25.3 lint pet-coupons.arazzo.yaml"

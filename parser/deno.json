@@ -1,0 +1,8 @@
+{
+    "name": "@arazzo-tools/parser",
+    "version": "0.1.0",
+    "exports": "./mod.ts",
+    "imports": {
+        "z": "https://deno.land/x/zod@v3.23.8/index.ts"
+    }
+}
