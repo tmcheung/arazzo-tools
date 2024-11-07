@@ -20,8 +20,12 @@ export type RelativeUrl = BrandedString<"RelativeUrl">;
 
 export type Url = URL;
 
-export type Literal = string | number | boolean | null;
+type Literal = string | number | boolean | null;
 export type Json = Literal | { [key: string]: Json } | Json[];
+/**
+ * A JSON document representing a JSON Schema
+ */
+export type JsonSchema = Json;
 
 export type JsonPointer = BrandedString<"JsonPointer">;
 export type JsonPath = BrandedString<"JsonPath">;

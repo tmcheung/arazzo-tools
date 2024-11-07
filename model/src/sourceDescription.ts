@@ -13,7 +13,7 @@ export type SourceDescription = {
     /**
      * REQUIRED. A URL to a source description to be used by a workflow. If a relative reference is used, it MUST be in the form of a URI-reference as defined by RFC3986.
      */
-    url: RelativeUrl | URL;
+    url: URL | RelativeUrl;
     /**
      * The type of source description. Possible values are 'openapi' or 'arazzo'.
      */

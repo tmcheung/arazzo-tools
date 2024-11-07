@@ -118,4 +118,5 @@
 //             ),
 //     })
 //     .strict();
-// export type Step = z.infer<typeof Step>;
+
+export type Step = {};
