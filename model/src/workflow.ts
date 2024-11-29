@@ -1,7 +1,7 @@
 import type {
+    ReusableObject,
     JsonSchema,
     LookupKey,
-    ReusableObject,
     RuntimeExpression,
     WorkflowId,
 } from "./shared/common.ts";
@@ -16,6 +16,10 @@ import type { Step } from "./step.ts";
 //  * A runtime expression within the context of a workflow
 //  */
 export type WorkflowExpression = RuntimeExpression;
+
+export type WorkflowSuccessAction = SuccessAction | ReusableObject;
+export type WorkflowFailureAction = FailureAction | ReusableObject;
+export type WorkflowParameter = Parameter | ReusableObject;
 
 // /**
 //  * Describes the steps to be taken across one or more APIs to achieve an objective.
@@ -50,11 +54,11 @@ export type Workflow = {
     /**
      * A list of success actions that are applicable for all steps described under this workflow. These success actions can be overridden at the step level but cannot be removed there. If a Reusable Object is provided, it MUST link to success actions defined in the components/successActions of the current Arazzo document. The list MUST NOT include duplicate success actions.
      */
-    successActions?: (SuccessAction | ReusableObject)[];
+    successActions?: WorkflowSuccessAction[];
     /**
      * A list of failure actions that are applicable for all steps described under this workflow. These failure actions can be overridden at the step level but cannot be removed there. If a Reusable Object is provided, it MUST link to failure actions defined in the components/failureActions of the current Arazzo document. The list MUST NOT include duplicate failure actions.
      */
-    failureActions?: (FailureAction | ReusableObject)[];
+    failureActions?: WorkflowFailureAction[];
     /**
      * A map between a friendly name and a dynamic output value. The name MUST use keys that match the regular expression: ^[a-zA-Z0-9.-_]+$.
      */
@@ -62,5 +66,5 @@ export type Workflow = {
     /**
      * A list of parameters that are applicable for all steps described under this workflow. These parameters can be overridden at the step level but cannot be removed there. Each parameter MUST be passed to an operation or workflow as referenced by operationId, operationPath, or workflowId as specified within each step. If a Reusable Object is provided, it MUST link to a parameter defined in the components/parameters of the current Arazzo document. The list MUST NOT include duplicate parameters.
      */
-    parameters?: (Parameter | ReusableObject)[];
+    parameters?: WorkflowParameter[];
 };

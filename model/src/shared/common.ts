@@ -2,6 +2,8 @@ declare const __brand: unique symbol;
 type Brand<B> = { [__brand]: B };
 type Branded<T, B> = T & Brand<B>;
 export type BrandedString<B> = Branded<string, B>;
+// deno-lint-ignore no-explicit-any
+export type BrandedAny<B> = Branded<any, B>;
 
 /**
  * Lookup key for Maps. The keys must match the regex "^[a-zA-Z0-9\.\-_]+$"
@@ -20,8 +22,9 @@ export type RelativeUrl = BrandedString<"RelativeUrl">;
 
 export type Url = URL;
 
-type Literal = string | number | boolean | null;
+export type Literal = string | number | boolean | null;
 export type Json = Literal | { [key: string]: Json } | Json[];
+
 /**
  * A JSON document representing a JSON Schema
  */

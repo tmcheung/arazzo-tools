@@ -25,6 +25,7 @@ export class EndFailureAction extends AbstractFailureAction {
         super("end", name, criteria);
     }
 }
+
 export class GotoStepFailureAction extends AbstractFailureAction {
     type: "goto" = "goto";
     constructor(
@@ -38,6 +39,7 @@ export class GotoStepFailureAction extends AbstractFailureAction {
         super("goto", name, criteria);
     }
 }
+
 export class GotoWorkflowFailureAction extends AbstractFailureAction {
     type: "goto" = "goto";
     constructor(
