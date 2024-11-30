@@ -27,23 +27,23 @@ type SuccessAction = {
 }
 ```
 
-Instead of the above where the type allows invalid combinations of `type`, `workflowId` and `stepId` (e.g. `{ type = "end", workflowId: "w1", stepId: "s1" }`) we try to contain this logic with a union type:
+Instead of the above where the type allows invalid combinations of `type`, `workflowId` and `stepId` (e.g. `{ type = "end", workflowId: "w1", stepId: "s1" }`) we try to contain this logic with a discriminated union type:
 
 ``` javascript
 type SuccessAction = {
     type: "end",
     ...
-} & {
+} | {
     type: "goto",
     workflowId: WorkflowReference,
     ...
-} & {
+} | {
     type: "goto",
     stepId: StepId,
 }
 ```
 
-Furthermore, to simplify and streamline the identification of a specific type in a union we use classes. The `instanceof` operator can be used as type guard to narrow the union types.
+Furthermore, to simplify and streamline the identification of a specific type in a discriminated union we use classes. The `instanceof` operator can be used as type guard to narrow the union types.
 
 ``` javascript
 class EndSuccessAction {
@@ -61,7 +61,7 @@ class GotoStepSuccessAction {
     constructor(public stepId: StepId, ...){}
 }
 
-// SuccessAction is either a EndSuccessAction, GotoWorkflowSuccessAction or GotoStepSuccessAction
+// SuccessAction is either an EndSuccessAction, GotoWorkflowSuccessAction or GotoStepSuccessAction
 export type SuccessAction = EndSuccessAction | GotoWorkflowSuccessAction | GotoStepSuccessAction
 ```
 
@@ -74,7 +74,7 @@ function(action: SuccessAction) {
 }
 ```
 
-### List of union types
+### List of discriminated union types
 #### Source Description union types
 - `SourceDescriptionURL = URL | RelativeUrl`
 
